@@ -1,0 +1,22 @@
+---
+version: "3.8"
+
+
+services:
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    network_mode: host
+    volumes:
+      - type: volume
+        source: portainer-volume
+        target: /data
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    restart: always
+
+
+volumes:
+  portainer-volume:
